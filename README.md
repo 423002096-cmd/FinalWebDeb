@@ -442,7 +442,5 @@ https://your-live-eventhub-url.com/
 
 ---
 
-## License
-
-This project is for educational purposes only.#   F i n a l W e b D e b  
+## License#   F i n a l W e b D e b  
  
