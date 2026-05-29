@@ -1,56 +1,58 @@
 # EventHub - Event Registration & Management System
 
-EventHub is a full-stack CodeIgniter 4 final project for BS Information Technology. It is a modern event registration and management system where public users can browse events, register online, upload a profile picture, and receive an email confirmation.
+![CodeIgniter](https://img.shields.io/badge/CodeIgniter-4.7.3-red)
+![PHP](https://img.shields.io/badge/PHP-8.2+-blue)
+![MySQL](https://img.shields.io/badge/MySQL-Database-orange)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-5-purple)
+![PHPUnit](https://img.shields.io/badge/PHPUnit-10-green)
 
-Administrators can securely log in, view dashboard statistics, search attendees, manage registration records, view uploaded images, and delete invalid entries.
-
-The project was built to satisfy the final project requirements for security, advanced CodeIgniter 4 features, unit testing/debugging, deployment readiness, code quality, and documentation.
+EventHub is a full-stack CodeIgniter 4 final project developed for BS Information Technology. The system allows users to browse events, register online, upload profile pictures, and receive email confirmations. Administrators can manage registrations, monitor attendees, and access dashboard statistics through a secure admin panel.
 
 ---
 
 ## Table of Contents
 
-- [Project Information](#project-information)
-- [Contributors](#contributors)
-- [Main Features](#main-features)
-- [Technologies Used](#technologies-used)
-- [System Requirements](#system-requirements)
-- [Final Project Folder Structure](#final-project-folder-structure)
-- [Installation and Local Setup](#installation-and-local-setup)
-- [Default Admin Account](#default-admin-account)
-- [Database Tables](#database-tables)
-- [SMTP Email Setup](#smtp-email-setup)
-- [Security Implementation](#security-implementation)
-- [Advanced CI4 Features](#advanced-ci4-features)
-- [Unit Testing and Debugging](#unit-testing-and-debugging)
-- [Deployment](#deployment)
-- [Live URL](#live-url)
-- [Important Notes](#important-notes)
-- [Final Status](#final-status)
-- [License](#license)
+* [Project Information](#project-information)
+* [Contributors](#contributors)
+* [Main Features](#main-features)
+* [Technologies Used](#technologies-used)
+* [System Requirements](#system-requirements)
+* [Project Structure](#project-structure)
+* [Installation and Setup](#installation-and-setup)
+* [Default Admin Account](#default-admin-account)
+* [Database Tables](#database-tables)
+* [SMTP Email Setup](#smtp-email-setup)
+* [Security Implementation](#security-implementation)
+* [Advanced CodeIgniter 4 Features](#advanced-codeigniter-4-features)
+* [Unit Testing and Debugging](#unit-testing-and-debugging)
+* [Deployment](#deployment)
+* [Live URL](#live-url)
+* [Important Notes](#important-notes)
+* [Final Status](#final-status)
+* [License](#license)
 
 ---
 
 ## Project Information
 
-| Category | Details |
-| --- | --- |
+| Category      | Details                                           |
+| ------------- | ------------------------------------------------- |
 | Project Title | EventHub - Event Registration & Management System |
-| Framework | CodeIgniter 4 |
-| Language | PHP 8.2+ |
-| Database | MySQL |
-| Frontend | Bootstrap 5, SweetAlert2, AOS Animations |
-| Testing | PHPUnit |
+| Framework     | CodeIgniter 4                                     |
+| Language      | PHP 8.2+                                          |
+| Database      | MySQL                                             |
+| Frontend      | Bootstrap 5, SweetAlert2, AOS Animations          |
+| Testing       | PHPUnit                                           |
 
 ---
 
 ## Contributors
 
-- Gerald Ace V. Nazareno
-- Aryana B. Balasta
-- Justine V. Deleon
-- Aaliyah Francesca Gabriele M. Garlan
-- Laurence B. Alsong
+* Gerald Ace V. Nazareno
+* Aryana B. Balasta
+* Justine V. Deleon
+* Aaliyah Francesca Gabriele M. Garlan
+* Laurence B. Alsong
 
 **BSIT 3.8**
 
@@ -58,46 +60,46 @@ The project was built to satisfy the final project requirements for security, ad
 
 ## Main Features
 
-- Public landing page with event highlights and upcoming event cards
-- Event registration form with validation
-- Secure profile picture upload using CodeIgniter `UploadedFile`
-- Uploaded files stored in `writable/uploads/`
-- Registration success page displaying uploaded image
-- Gmail SMTP confirmation email
-- HTML email template with plain-text fallback
-- Admin login and logout
-- Session-based authentication
-- Password hashing using `password_hash()` and `password_verify()`
-- Admin dashboard statistics
-- Attendee management table
-- Search by name, email, or course
-- Pagination with 5 records per page
-- Search query maintained during pagination
-- Delete attendee with SweetAlert2 confirmation
-- CSRF protection
-- XSS prevention and escaped output
-- Debug Toolbar support in development mode
-- Homepage page caching
-- Optimized attendee query using `select()`
-- Database indexes for searchable fields
-- PHPUnit test suite
-- Deployment documentation for InfinityFree, Hostinger, and shared hosting
+### Public Features
+
+* Browse available events
+* Register online
+* Upload profile pictures
+* Receive email confirmation
+* View registration success page
+
+### Admin Features
+
+* Secure administrator login
+* Dashboard statistics
+* Search attendees
+* Pagination (5 records per page)
+* Manage registration records
+* Delete attendee records
+* View uploaded profile pictures
+
+### Security Features
+
+* CSRF Protection
+* XSS Protection
+* Password Hashing
+* Session Authentication
+* Secure File Upload Validation
 
 ---
 
 ## Technologies Used
 
-- CodeIgniter 4.7.3
-- PHP 8.2+
-- MySQL
-- Bootstrap 5
-- Bootstrap Icons
-- SweetAlert2
-- AOS Animations
-- PHPUnit 10
-- Gmail SMTP
-- XAMPP for local development
-- InfinityFree or shared hosting for deployment
+* CodeIgniter 4.7.3
+* PHP 8.2+
+* MySQL
+* Bootstrap 5
+* Bootstrap Icons
+* SweetAlert2
+* AOS Animations
+* PHPUnit 10
+* Gmail SMTP
+* XAMPP
 
 ---
 
@@ -113,116 +115,57 @@ XAMPP
 
 ---
 
-## Final Project Folder Structure
+## Project Structure
 
 ```text
 EVENTMANAGEMENTSYSTEM/
-|
-|-- app/
-|   |-- Config/
-|   |   |-- Routes.php
-|   |   |-- Filters.php
-|   |   |-- Email.php
-|   |   `-- Pager.php
-|   |
-|   |-- Controllers/
-|   |   |-- AdminController.php
-|   |   |-- AuthController.php
-|   |   |-- Home.php
-|   |   `-- RegistrationController.php
-|   |
-|   |-- Database/
-|   |   |-- Migrations/
-|   |   `-- Seeds/
-|   |
-|   |-- Filters/
-|   |   |-- AuthFilter.php
-|   |   `-- XSSFilter.php
-|   |
-|   |-- Models/
-|   |   |-- AttendeeModel.php
-|   |   |-- EventModel.php
-|   |   `-- UserModel.php
-|   |
-|   `-- Views/
-|       |-- admin/
-|       |-- auth/
-|       |-- emails/
-|       |-- events/
-|       |-- home/
-|       |-- layouts/
-|       `-- pager/
-|
-|-- database/
-|   `-- eventhub_schema.sql
-|
-|-- public/
-|   |-- assets/
-|   |   `-- css/
-|   |       `-- eventhub.css
-|   |-- index.php
-|   `-- .htaccess
-|
-|-- tests/
-|   |-- app/
-|   |   `-- EventHubWeek14Test.php
-|   `-- unit/
-|       `-- EventHubTest.php
-|
-|-- writable/
-|   `-- uploads/
-|
-|-- .env
-|-- .gitignore
-|-- .htaccess
-|-- composer.json
-`-- phpunit.dist.xml
+│
+├── app/
+│   ├── Config/
+│   ├── Controllers/
+│   ├── Database/
+│   ├── Filters/
+│   ├── Models/
+│   └── Views/
+│
+├── database/
+│   └── eventhub_schema.sql
+│
+├── public/
+│   ├── assets/
+│   ├── index.php
+│   └── .htaccess
+│
+├── tests/
+│
+├── writable/
+│   └── uploads/
+│
+├── .env
+├── composer.json
+├── phpunit.xml
+└── README.md
 ```
 
 ---
 
-## Installation and Local Setup
+## Installation and Setup
 
-### 1. Start Apache and MySQL
+### 1. Clone Repository
 
-Start Apache and MySQL using XAMPP Control Panel.
-
----
-
-### 2. Place the Project Directory
-
-```text
-C:\xampp\htdocs\EVENTMANAGEMENTSYSTEM
+```bash
+git clone https://github.com/your-username/EventHub.git
 ```
 
----
-
-### 3. Install Composer Dependencies
+### 2. Install Dependencies
 
 ```bash
 composer install
 ```
 
----
+### 3. Configure Environment
 
-### 4. Create or Import the Database
-
-#### Option A - Import SQL Using phpMyAdmin
-
-```text
-database/eventhub_schema.sql
-```
-
-#### Option B - Use CodeIgniter Migration and Seeder
-
-```bash
-php spark migrate
-php spark db:seed EventHubSeeder
-```
-
----
-
-### 5. Configure `.env`
+Copy `.env.example` to `.env` and update:
 
 ```env
 CI_ENVIRONMENT = development
@@ -237,12 +180,34 @@ database.default.DBDriver = MySQLi
 database.default.port = 3306
 ```
 
----
+### 4. Create Database
 
-### 6. Run the Application
+```sql
+CREATE DATABASE eventhub_db;
+```
+
+### 5. Run Migration
+
+```bash
+php spark migrate
+```
+
+### 6. Seed Database
+
+```bash
+php spark db:seed EventHubSeeder
+```
+
+### 7. Run Application
+
+```bash
+php spark serve
+```
+
+Open:
 
 ```text
-http://localhost/EVENTMANAGEMENTSYSTEM/public/
+http://localhost:8080
 ```
 
 ---
@@ -254,35 +219,22 @@ Email: ***********
 Password: ***********
 ```
 
-> Change the default administrator password before deploying to production.
-
-If you would like to test the system, please contact one of the contributors.
+> Change the default administrator password before deployment.
 
 ---
 
 ## Database Tables
 
-```text
-users
-events
-attendees
-migrations
-```
-
-### Main Table Purpose
-
-| Table | Purpose |
-| --- | --- |
-| users | Administrator accounts |
-| events | Event listings |
-| attendees | Registration records and uploaded image filenames |
-| migrations | CodeIgniter migration tracking |
+| Table      | Description            |
+| ---------- | ---------------------- |
+| users      | Administrator accounts |
+| events     | Event records          |
+| attendees  | Registration records   |
+| migrations | Migration history      |
 
 ---
 
 ## SMTP Email Setup
-
-Create a Gmail App Password and configure the `.env` file:
 
 ```env
 email.fromEmail = 'yourgmail@gmail.com'
@@ -290,184 +242,123 @@ email.fromName = 'EventHub'
 email.protocol = smtp
 email.SMTPHost = smtp.gmail.com
 email.SMTPUser = 'yourgmail@gmail.com'
-email.SMTPPass = 'your-gmail-app-password'
+email.SMTPPass = 'your-app-password'
 email.SMTPPort = 587
 email.SMTPCrypto = tls
 email.mailType = html
 ```
 
-### Email Template Location
+Email template location:
 
 ```text
 app/Views/emails/registration_confirmation.php
-```
-
-### Email Logs
-
-```text
-writable/logs/
 ```
 
 ---
 
 ## Security Implementation
 
-### Security Files
-
-```text
-app/Config/Filters.php
-app/Filters/AuthFilter.php
-app/Filters/XSSFilter.php
-```
-
-### Implemented Security Controls
-
-- Global CSRF filter
-- `csrf_field()` in all POST forms
-- Secure session authentication
-- Admin route protection
-- Password hashing
-- XSS input cleanup filter
-- Escaped output using `esc($variable, 'html')`
-- Secure uploaded file validation
-- Directory listing disabled using `Options -Indexes`
+* Global CSRF Filter
+* Session Authentication
+* Password Hashing
+* XSS Filtering
+* Secure File Upload Validation
+* Route Protection
+* Escaped Output
+* Directory Listing Disabled
 
 ---
 
-## Advanced CI4 Features
+## Advanced CodeIgniter 4 Features
 
-Implemented features include:
-
-- Multipart image upload form
-- UploadedFile validation
-- Secure upload storage in `writable/uploads/`
-- Uploaded image preview after registration
-- Gmail SMTP email integration
-- HTML email and plain-text fallback
-- Logged email delivery status
-- Pagination using `$model->paginate(5)`
-- Search query maintained during pagination
-- Current page and total record count
-- Debug Toolbar in development mode
-- Homepage route caching
-- Optimized attendee query using `select()`
-- Database indexes for performance optimization
+* File Upload using UploadedFile
+* Gmail SMTP Integration
+* HTML Email Templates
+* Pagination
+* Search Filtering
+* Query Optimization
+* Route Caching
+* Debug Toolbar
+* Database Indexing
 
 ---
 
 ## Unit Testing and Debugging
 
-### Test Files
-
-```text
-tests/app/EventHubWeek14Test.php
-tests/unit/EventHubTest.php
-```
-
-### Run PHPUnit
+Run PHPUnit:
 
 ```bash
-vendor/bin/phpunit --no-coverage
+vendor/bin/phpunit
 ```
 
-### Windows PowerShell
+Windows:
 
 ```powershell
-vendor\bin\phpunit --no-coverage
+vendor\bin\phpunit
 ```
 
-### Current Result
+Expected Result:
 
 ```text
 OK (11 tests, 20 assertions)
 ```
 
-### Covered Tests
-
-- Homepage returns HTTP 200
-- Model method test using `assertEquals()`
-- Validation pass/fail test
-- Required assertions:
-  - `assertTrue`
-  - `assertEquals`
-  - `assertNotNull`
-  - `assertStatus(200)`
-
 ---
 
 ## Deployment
 
-### Production `.env` Example
+### Production Environment
 
 ```env
 CI_ENVIRONMENT = production
 
-app.baseURL = 'https://your-live-domain.com/'
+app.baseURL = 'https://your-domain.com/'
 ```
 
-### Deployment Requirements Covered
+### Deployment Checklist
 
-- Production environment configuration
-- Live `baseURL`
-- Debug Toolbar disabled in production
-- File upload through SFTP/FileZilla/WinSCP or Git
-- `writable/` permissions set to `755`
-- Root `.htaccess` redirects traffic to `/public/`
-- Database export/import instructions
-- Live database credentials setup
-- SSL/HTTPS deployment guide
-- `.env` included in `.gitignore`
-- Directory listing disabled
-- Strong production database password policy
-
-### Root `.htaccess`
-
-```apache
-Options -Indexes
-
-<IfModule mod_rewrite.c>
-    RewriteEngine On
-    RewriteCond %{REQUEST_URI} !^/public/
-    RewriteRule ^(.*)$ public/$1 [L]
-</IfModule>
-```
+* Configure live database
+* Set writable permissions
+* Enable HTTPS
+* Upload project files
+* Configure SMTP credentials
+* Disable Debug Toolbar
+* Verify file uploads
 
 ---
 
 ## Live URL
 
-Deployment link will be added after production deployment.
+Coming Soon
 
 ```text
-https://your-live-eventhub-url.com/
+https://your-live-domain.com
 ```
 
 ---
 
 ## Important Notes
 
-- Do not commit real `.env` secrets.
-- `.env` is already included in `.gitignore`.
-- Change the default administrator password before public deployment.
-- Keep `writable/uploads/` writable on the production server.
-- Use HTTPS for production deployment.
+* Do not commit `.env` files.
+* Keep SMTP credentials private.
+* Change default admin password.
+* Use HTTPS in production.
+* Ensure writable folder permissions are configured correctly.
 
 ---
 
 ## Final Status
 
-| Category | Status |
-| --- | --- |
-| Security | Completed |
-| Advanced Features | Completed |
-| Unit Testing and Debugging | Completed |
-| Deployment Documentation | Completed |
-| Code Quality and Documentation | Completed |
+| Requirement              | Status      |
+| ------------------------ | ----------- |
+| Security                 | ✅ Completed |
+| Advanced Features        | ✅ Completed |
+| Unit Testing             | ✅ Completed |
+| Deployment Documentation | ✅ Completed |
+| Code Quality             | ✅ Completed |
 
 ---
 
 ## License
 
-This project is for educational purposes only.
-#   F i n a l W e b D e b  
- 
+This project is intended for educational purposes only.
